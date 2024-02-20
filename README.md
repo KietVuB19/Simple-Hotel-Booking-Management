@@ -9,4 +9,4 @@ A web-based project with 3 main function:
 Ứng dụng web gồm 3 chức năng chính:
 - Đặt phòng: Cho phép khách hàng xem các phòng phù hợp và đặt, hủy đặt phòng
 - Quản lý phòng: Cho phép quản lý (manager) cập nhật phòng, kiểm tra thông tin đặt phòng
-- Quản lý tạ khoản: Cho phép admin quản lý người dùng (vô hiệu hóa, nâng cấp tài khoản giữa khách hàng, quản lý, admin)
+- Quản lý tài khoản: Cho phép admin quản lý tài khoản người dùng (vô hiệu hóa, nâng cấp tài khoản giữa khách hàng, quản lý, admin)
