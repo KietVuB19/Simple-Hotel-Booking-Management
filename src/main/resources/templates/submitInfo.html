@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+
+<head>
+	<title>Tao tai khoan</title>
+	<style>
+		body{
+			background-color: darkcyan;
+			color: darkcyan;
+			align-items: center;
+			padding-right: 30%;
+    		padding-left: 30%;
+		}
+		h1{
+			text-align: center;
+			font-size: xx-large;
+		}
+		
+		.submitForm{
+			background-color: lightgray;
+			padding-right: 15px;
+    		padding-left: 15px;
+    		margin: 25px;
+    		border-radius: 5px;
+		}
+		input[type="text"], input[type="email"]{
+			border-radius: 5px;
+			margin-bottom: 15px;
+			width: 100%;
+		}
+		button, input[type="submit"]{
+			background-color: darkcyan;
+			color: white;
+			border-radius: 5px;
+			width: 20%;
+			height: 30px;
+			margin-top: 2%;
+			margin-left: 19%;
+			margin-bottom: 20px;
+		}
+		a, a:visited, a:hover, a:active{
+			text-decoration: none;
+			color: inherit;
+		}
+		button:hover, input[type="submit"]:hover{
+			background-color: #ACC8E5;
+		    color: #8B0046;
+		    cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="submitForm">
+	<h1>Thông tin cá nhân</h1>
+	<form th:action="@{/account/submitInfo}" method="post">
+		<table th:object="${user}">
+			<tr>
+				<td th:text="'Họ tên: '"></td>
+				<td><input type="text" th:field="*{fullname}"></td>
+				<td th:if="${#fields.hasErrors('fullname')}" th:errors="*{fullname}"></td>
+			</tr>
+			<tr>
+				<td th:text="'Căn cước công dân: '"></td>
+				<td><input type="text" th:field="*{idCard}"></td>
+				<td th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></td>
+			</tr>
+			<tr>
+				<td th:text="'Số điện thoại: '"></td>
+				<td><input type="text" th:field="*{phoneNumber}"></td>
+				<td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
+			</tr>
+			<tr>
+				<td th:text="'Email: '"></td>
+				<td><input type="email" th:field="*{email}"></td>
+			</tr>
+			<tr>
+				<td th:text="'Địa chỉ: '"></td>
+				<td><input type="text" th:field="*{address}"></td>
+			</tr>
+		</table>
+		<button><a th:href="@{/login}" th:text="'Đăng nhập'"></a></button>
+		<input type="submit" value="Đăng kí">
+	</form>
+	</div>
+	
+</body>
+
+</html>

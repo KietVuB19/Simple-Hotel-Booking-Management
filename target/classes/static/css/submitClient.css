@@ -1,0 +1,61 @@
+body {
+	background-color: darkcyan;
+	color: darkcyan;
+	align-items: center;
+	padding-right: 30%;
+	padding-left: 30%;
+}
+
+h1 {
+	text-align: center;
+	font-size: xx-large;
+}
+
+.addNewClient {
+	background-color: lightgray;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin: 25px;
+	border-radius: 5px;
+}
+
+button,
+input[type="submit"] {
+	background-color: darkcyan;
+	color: white;
+	width: 20%;
+	height: 30px;
+	margin-left: 20%;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+	text-decoration: none;
+	color: inherit;
+}
+
+input[type="text"],
+input[type="password"] {
+	background-color: white;
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	line-height: 2em;
+}
+
+label {
+	margin-left: 15%;
+	margin-bottom: 5%;
+}
+
+input[type="submit"]:hover,
+button:hover {
+	background-color: #ACC8E5;
+	color: #8B0046;
+}

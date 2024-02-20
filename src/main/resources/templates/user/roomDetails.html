@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Thông tin phòng</title>
+	<style>
+		body{
+			color: black;
+			font-family: 'Poppins', sans-serif;
+		}
+		.back_re .title h2{
+			box-sizing: border-box !important;
+			color: white;
+			size: 40px;
+			text-align: center;
+			padding: 32px;
+			font-weight: 600;
+			text-transform: uppercase;
+			line-height: 35px;
+		}
+		.back_re{
+			background-color: #0f1521;
+			height: 90px;
+			margin-top: -20px;
+			display: block;
+		}
+		body .containerr{
+			padding-right: 23%;
+    		padding-left: 23%;
+		}
+		.containerr{
+    		height: fit-content;
+		}
+		.roomInfo{
+			height: 100%;
+			background-color: #eee;
+			padding: 25px;
+    		margin-top: 25px;
+    		border-radius: 15px;
+		}
+		.card_body{
+			background-color: white;
+			padding: 25px;
+			border-radius: 15px;
+		}
+		.row{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.col{
+			flex:0 0 auto;
+			width: 25%;
+		}
+		.col2{
+			flex: 0 0 auto;
+    		width: 75%;
+    		color: #757575;
+		}
+		button, input[type="submit"]{
+			background-color: darkcyan;
+			color: white;
+			height: 30px;
+			width: 90px;
+			margin-left: 25%;
+			margin-top: 20px;
+			border-radius: 10px;
+		}
+		a, a:visited, a:hover, a:active{
+			text-decoration: none;
+			color: inherit;
+			background-color: transparent;
+			transition: 0.3s ease-in-out; 	
+		}
+		.topNavbar{
+  			overflow: hidden;
+  			background-color: white;
+		}
+		.topNavbar a {
+		  	float: right;
+		  	color: black;
+		 	text-align: center;
+		 	text-transform: uppercase;
+		  	padding: 14px 16px;
+		  	text-decoration: none;
+		 	font-size: 17px;
+		}
+		.topNavbar a:hover{
+			color: #fe0000;
+  	  		border-bottom: #fe0000 solid 3px;
+		}
+		.topNavbar .active{
+			color: #fe0000;
+  	  		border-bottom: #fe0000 solid 3px;
+		}
+		input[type="submit"]:hover,button:hover{
+			background-color: #ACC8E5;
+		    color: #8B0046;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="topNavbar">
+	  	<a th:href="@{/account}" th:text="'Tài khoản'"></a>
+	  	<a class="active" th:href="@{/room/details/{id}(id=${room.id})}" th:text="'Chi tiết phòng'"></a>
+		<a th:href="@{/room}" th:text="'Danh sách phòng'"></a>
+		<a th:href="@{/}" th:text="'Trang chủ'"></a>
+	</div>
+	<div class="back_re">
+		<div class="title">
+			 <h2>Thông tin phòng <span th:text="${room.name}"></span></h2>
+        </div>
+    </div>
+	<div class="containerr">
+		<div class="roomInfo">
+			<div class="card_body">
+				<div class="row">
+					<div class="col" th:text="'Số phòng: '" align="left"></div>
+					<div class="col2" th:text="${room.name}"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col" th:text="'Loại phòng: '" align="left"></div>
+					<div class="col2" th:text="${room.type}"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col" th:text="'Giá phòng: '" align="left"></div>
+					<div class="col2" th:text="${room.price} + ' vnđ/ngày'"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col" th:text="'Chi tiết: '" align="left"></div>
+					<div class="col2" th:if="${room.description}" th:text="${room.description}"></div>
+				</div>
+			</div>
+		</div>
+		<button><a th:href="@{/booking/{id}(id=${room.id})}" th:text="'Đặt phòng'"></a></button>
+		<button><a th:href="@{/room}" th:text="'Quay lại'"></a></button>
+	</div>	
+</body>

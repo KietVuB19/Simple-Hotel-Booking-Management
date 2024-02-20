@@ -1,0 +1,119 @@
+body {
+	overflow: auto
+}
+
+.container {
+	top: 25%;
+	position: absolute;
+	width: 100%;
+}
+
+image {
+	width: 100%;
+}
+
+.unavailable {
+	background-color: red;
+}
+
+.smallBox {
+	background-color: #000000c7;
+	color: white;
+	margin-left: 15%;
+	margin-right: 50%;
+	border-left: #ff0909 solid 5px;
+}
+
+body {
+	background-image: url('/images/banner2.jpg');
+}
+
+h1 {
+	padding-top: 15px;
+	font-size: 30px;
+	line-height: 30px;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center
+}
+
+a,
+a:visited,
+a:active {
+	text-decoration: none;
+	color: inherit;
+	transition: 0.3s ease-in-out;
+}
+
+.topNavbar {
+	overflow: hidden;
+	background-color: white;
+}
+
+.topNavbar a {
+	float: right;
+	color: black;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.topNavbar a:hover {
+	color: #fe0000;
+	border-bottom: #fe0000 solid 3px;
+}
+
+.topNavbar .active {
+	color: #fe0000;
+	border-bottom: #fe0000 solid 3px;
+}
+
+.row {
+	width: 100%;
+	padding-left: 5%;
+	min-height: 1px;
+	margin-top: 20px;
+}
+
+.rowBt {
+	margin-top: 15px;
+	height: 30px;
+	display: flex;
+}
+
+input[type="text"],
+input[type="date"] {
+	width: 85%;
+	height: 30px;
+	font-size: 25px;
+}
+
+input[type="submit"],
+button {
+	background-color: #fe0000;
+	width: 145px;
+	margin: 5px 10px;
+	padding: 10px 0;
+
+	border-radius: 50px;
+	color: #fff;
+	font-size: 20px;
+	transition: ease-in 0.3s;
+	display: block;
+}
+
+input[type="submit"]:hover,
+button:hover {
+	background-color: #fff;
+	color: #fe0000;
+}
+
+input[type="submit"] {
+	margin-left: 80%;
+}
+
+button {
+	margin-left: 30%;
+}

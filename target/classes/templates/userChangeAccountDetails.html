@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Tài khoản</title>
+	<link href="/css/account.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="topNavbar">
+		<span th:if="${account}" th:switch="${account.roles}">
+			<span th:case="ROLE_USER">
+				<div class="topNavbar">
+					<a class="active" th:href="@{/account}" th:text="'Tài khoản'"></a>
+					<a th:href="@{/booking/list}" th:text="'Danh sách đặt phòng'"></a>
+					<a th:href="@{/room}" th:text="'Danh sách phòng'"></a>
+					<a th:href="@{/}" th:text="'Trang chủ'"></a>
+				</div>
+			</span>
+
+		</span>
+	</div>
+
+	<div class="back_re">
+		<div class="title">
+			<h2>Thông tin tài khoản</h2>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="userInfo" th:if="${account}">
+			<div class="card_body">
+				<form th:object="${user}" th:action="@{/account/change/{id}(id=${account.user.id})}" method="post">
+					<div class="row">
+						<div class="col" th:text="'Họ tên'"></div>
+						<div class="col2">
+							<input type="text" th:field="${user.fullname}">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col" th:text="'Địa chỉ'"></div>
+						<div class="col2">
+							<input type="text" th:field="${user.address}">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col" th:text="'Số điện thoại'"></div>
+						<div class="col2">
+							<input type="text" th:field="${user.phoneNumber}">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<input type="submit" value="Xác nhận">
+				</form>
+				<button class="change">
+					<a th:href="@{/account/change/{id}(id=${account.user.id})}" th:text="'Quay lại'"></a>
+				</button>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>

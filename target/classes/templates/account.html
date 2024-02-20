@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Tài khoản</title>
+	<link href="/css/account.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="topNavbar">
+		<span th:if="${account}" th:switch="${account.roles}">
+			<span th:case="ROLE_USER">
+				<div class="topNavbar">
+					<a class="active" th:href="@{/account}" th:text="'Tài khoản'"></a>
+					<a th:href="@{/booking/list}" th:text="'Danh sách đặt phòng'"></a>
+					<a th:href="@{/room}" th:text="'Danh sách phòng'"></a>
+					<a th:href="@{/}" th:text="'Trang chủ'"></a>
+				</div>
+			</span>
+		</span>
+	</div>
+
+	<div class="back_re">
+		<div class="title">
+			<h2>THÔNG TIN TÀI KHOẢN <span th:text="${account.username}"></span></h2>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="userInfo" th:if="${account}">
+			<div class="card_body">
+				<div class="row">
+					<div class="col" th:text="'Họ tên'"></div>
+					<div class="col2" th:text="${account.user.fullname}"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col" th:text="'Địa chỉ'"></div>
+					<div class="col2" th:text="${account.user.address}"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col" th:text="'Số điện thoại'"></div>
+					<div class="col2" th:text="${account.user.phoneNumber}"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col" th:text="'Email'"></div>
+					<div class="col2" th:text="${account.user.email}"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col" th:text="'CCCD'"></div>
+					<div class="col2" th:text="${account.user.idCard}"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col" th:text="'Vai trò'"></div>
+					<div class="col2" th:switch="${account.roles}">
+						<span th:case="'ROLE_ADMIN'" th:text="'Admin'"></span>
+						<span th:case="'ROLE_MANAGER'" th:text="'Quản lý'"></span>
+						<span th:case="*" th:text="'Khách hàng'"></span>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<button class="out"><a th:href="@{logout}" th:text="'Đăng xuất'"></a></button>
+					<button class="change">
+						<a th:href="@{/account/change/{id}(id=${account.id})}" th:text="'Chỉnh sửa'"></a>
+					</button>
+				</div>
+			</div>
+
+		</div>
+</body>
+
+</html>

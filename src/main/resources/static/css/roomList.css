@@ -1,0 +1,138 @@
+	body {
+		color: black;
+		font-family: 'Poppins', sans-serif;
+		background-color: #f8f9fc;
+	}
+
+	.container,
+	.container-fluid {
+		padding-right: 1.5rem;
+		padding-left: 1.5rem;
+	}
+
+	.container-fluid {
+		margin-top: 20px;
+		margin-left: 15%;
+		margin-right: 15%;
+	}
+
+	h2 {
+		box-sizing: border-box !important;
+		color: white;
+		size: 40px;
+		text-align: center;
+		padding: 32px;
+		font-weight: 600;
+		text-transform: uppercase;
+		line-height: 35px;
+		position: relative;
+		letter-spacing: 0;
+	}
+
+	.back_re {
+		background-color: #0f1521;
+		height: 90px;
+		margin-top: -20px;
+		display: block;
+	}
+
+	a,
+	a:visited,
+	a:active {
+		text-decoration: none;
+		color: inherit;
+		transition: 0.3s ease-in-out;
+	}
+
+	.topNavbar {
+		overflow: hidden;
+		background-color: white;
+	}
+
+	.topNavbar a {
+		float: right;
+		color: black;
+		text-align: center;
+		text-transform: uppercase;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 17px;
+	}
+
+	.topNavbar a:hover {
+		color: #fe0000 !important;
+		border-bottom: #fe0000 solid 3px !important;
+	}
+
+	.topNavbar .active {
+		color: #fe0000;
+		border-bottom: #fe0000 solid 3px;
+	}
+
+	button:hover {
+		background-color: #ACC8E5;
+		color: #8B0046;
+	}
+
+	.sideBt {
+		width: 95px;
+		text-align: center;
+		background-color: darkcyan;
+		color: white;
+		border-radius: 10px;
+	}
+
+	.searchInput{
+		width:16%;
+	}
+	td.btacc {
+		width: 95px;
+		border: none;
+	}
+
+	.mb-4,
+	.my-4 {
+		margin-bottom: 1.5rem !important;
+	}
+
+	.shadow {
+		box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important;
+	}
+
+	.card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		word-wrap: break-word;
+		background-color: #fff;
+		background-clip: border-box;
+		border: 1px solid #e3e6f0;
+		border-radius: 0.35rem;
+	}
+
+	.card-body {
+		flex: 1 1 auto;
+		min-height: 1px;
+		padding: 1.25rem;
+	}
+
+	table {
+		margin-top: 20px;
+		border-radius: 5px;
+		width: 100%;
+		margin-bottom: 1rem;
+		color: #858796;
+		border-spacing: 2px;
+		border-collapse: collapse;
+	}
+	thead{
+		color: #0A0A0A;
+	}
+	.table-responsive {
+		width: 100%;
+	}
+
+	table th, td{
+		border: 1px solid #0A0A0A;
+	}

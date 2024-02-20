@@ -1,0 +1,51 @@
+tr,
+td {
+	color: black;
+}
+
+tr {
+	height: 80px;
+}
+
+a:link,
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+.tdBt {
+	width: 20px;
+}
+
+button,
+input[type="submit"] {
+	width: 95px;
+	border-radius: 10px;
+	margin-left: 25%;
+}
+
+button:hover,
+input[type="submit"]:hover {
+	background-color: #90B7E4;
+	color: black !important;
+	transition: 0.3s ease-in-out;
+}
+
+a.bt:hover {
+	background-color: #90B7E4;
+	color: black !important;
+	transition: 0.3s ease-in-out;
+}
+
+input[type="text"],
+input[type="number"] {
+	width: 60%;
+}
+
+#descr {
+	width: 100%;
+}
+
+.label {
+	width: 18%;
+}

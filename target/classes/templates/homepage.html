@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Homepage</title>
+	<style>
+		body{
+			color: black;
+			font-family: 'Poppins', sans-serif;
+		}
+		h1{
+			text-align: center;
+		}
+		.topNavbar{
+  			overflow: hidden;
+  			background-color: white;
+		}
+		.topNavbar a {
+		  	float: right;
+		  	color: black;
+		 	text-align: center;
+		 	text-transform: uppercase;
+		  	padding: 14px 16px;
+		  	text-decoration: none;
+		 	font-size: 17px;
+		}
+		.topNavbar a:hover{
+			color: #fe0000;
+  	  		border-bottom: #fe0000 solid 3px;
+		}
+		.topNavbar .active{
+			color: #fe0000;
+  	  		border-bottom: #fe0000 solid 3px;
+		}
+		img{
+			width: 100%;
+		}
+	</style>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Home</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="csscl/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="csscl/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="csscl/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      
+</head>
+
+<body>
+	<span th:if="${account}" th:switch="${account.roles}">		
+		<span th:case="ROLE_USER">
+			<div class="topNavbar">
+				<a th:href="@{/account}" th:text="'Tài khoản'"></a>
+				<a th:href="@{/booking/list}" th:text="'Danh sách đặt phòng'"></a>
+				<a th:href="@{/room}" th:text="'danh sách phòng'"></a>
+				<a class="active" th:href="@{/}" th:text="'Trang chủ'"></a>
+			</div>	
+		<img class="slide" src="" th:src="@{/images/about.png}" alt="">
+			
+		</span>
+		
+		<span th:unless="${account}">
+			<div class="topNavbar">
+					<a th:href="@{/room}" th:text="'Xem danh sách phòng'"></a>
+					<a class="active" th:href="@{/}" th:text="'Trang chủ'"></a>
+					<a th:href="@{/login}" th:text="'Đăng nhập'"></a>
+					<a th:href="@{/account/submitInfo}" th:text="'Đăng kí'"></a>				
+				</div>
+				<img class="slide" src="" th:src="@{/images/about.png}" alt="">
+				
+		</span>
+	<footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class=" col-md-4">
+                     <h3>Liên hệ</h3>
+                     <ul class="conta">
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ</li>
+                        <li><i class="fa fa-mobile" aria-hidden="true"></i> +01 1234567890</li>
+                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> demo@gmail.com</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-md-4">
+                     <h3>Menu</h3>
+                     <ul  class="link_menu">
+                        <span th:if="${account}" th:switch="${account.roles}">		
+						<span th:case="ROLE_USER">
+							<li><a th:href="@{/account}" th:text="'Tài khoản'"></a></li>
+							<li><a th:href="@{/booking/list}" th:text="'Danh sách đặt phòng'"></a></li>
+							<li><a th:href="@{/room}" th:text="'danh sách phòng'"></a></li>
+							<li><a th:href="@{/}" th:text="'Trang chủ'"></a></li>		
+						</span>
+						
+						<span th:case="ROLE_ADMIN">
+							<li><a th:href="@{/account}" th:text="'Tài khoản'"></a></li>
+							<li><a th:href="@{/account/list}" th:text="'Quản lý tài khoản'"></a></li>
+							<li><a th:href="@{/}" th:text="'Trang chủ'"></a></li>
+							
+						</span>
+						<span th:case="ROLE_MANAGER">
+							<li><a th:href="@{/account}" th:text="'Tài khoản'"></a></li>
+							<li><a th:href="@{/manage/room}" th:text="'Quản lý phòng'"></a></li>
+							<li><a th:href="@{/}" th:text="'Trang chủ'"></a></li>
+						</span>
+						</span>
+						<span th:unless="${account}">
+								<li><a th:href="@{/room}" th:text="'Xem danh sách phòng'"></a></li>
+								<li><a th:href="@{/}" th:text="'Trang chủ'"></a></li>
+								<li><a th:href="@{/login}" th:text="'Đăng nhập'"></a></li>
+								<li><a th:href="@{/account/submitInfo}" th:text="'Đăng kí'"></a></li>
+						</span>
+                     </ul>
+                  </div>
+                  <div class="col-md-4">
+                     <h3>Nhận tin tức mới nhất</h3>
+                     <form class="bottom_form">
+                        <input class="enter" placeholder="Nhập email" type="text" name="Enter your email">
+                        <button class="sub_btn">đăng ký</button>
+                     </form>
+                     <ul class="social_icon">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!--end footer-->
+</body>
+
+</html>

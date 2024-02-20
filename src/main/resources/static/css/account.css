@@ -1,0 +1,117 @@
+body {
+	color: black;
+	font-family: 'Poppins', sans-serif;
+}
+
+body .container {
+	padding-right: 23%;
+	padding-left: 23%;
+}
+
+.back_re .title h2 {
+	box-sizing: border-box !important;
+	color: white;
+	size: 40px;
+	text-align: center;
+	padding: 32px;
+	font-weight: 600;
+	line-height: 35px;
+}
+
+.container {
+	height: fit-content;
+}
+
+h2 {
+	position: relative;
+	letter-spacing: 0;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.back_re {
+	background-color: #0f1521;
+	height: 90px;
+	margin-top: -20px;
+	display: block;
+}
+
+.userInfo {
+	height: 100%;
+	background-color: #eee;
+	padding: 25px;
+	margin-top: 25px;
+	border-radius: 15px;
+}
+
+.card_body {
+	background-color: white;
+	padding: 25px;
+	border-radius: 15px;
+}
+
+.col {
+	flex: 0 0 auto;
+	width: 25%;
+}
+
+.col2 {
+	flex: 0 0 auto;
+	width: 75%;
+	color: #757575;
+}
+
+button {
+	background-color: darkcyan;
+	color: white ;
+	height: 30px !important;
+	margin-top: 20px;
+	border-radius: 10px ;
+}
+
+button:hover {
+	color: #8B0046 !important;
+	background-color: #ACC8E5;
+}
+
+a,
+a:visited,
+a:active {
+	text-decoration: none;
+	color: inherit;
+	background-color: transparent;
+	transition: 0.3s ease-in-out;
+}
+
+.topNavbar {
+	overflow: hidden;
+	background-color: white;
+}
+
+.topNavbar a {
+	float: right;
+	color: black;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.topNavbar a:hover {
+	color: #fe0000 !important;
+	border-bottom: #fe0000 solid 3px !important;
+}
+
+.topNavbar .active {
+	color: #fe0000;
+	border-bottom: #fe0000 solid 3px;
+}
+
+.out, .change {
+	margin-left: 25%;
+	width: 15%;
+}

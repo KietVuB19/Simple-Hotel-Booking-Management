@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Thông tin phòng</title>
+	<link href="/css/bookingInfo.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="topNavbar">
+		<a th:href="@{/account}" th:text="'Tài khoản'"></a>
+		<a class="active" th:href="@{/booking/{id}(id=${room.id})}" th:text="'Đặt phòng'"></a>
+		<a th:href="@{/booking/list}" th:text="'Danh sách đặt phòng'"></a>
+		<a th:href="@{/room}" th:text="'Danh sách phòng'"></a>
+		<a th:href="@{/}" th:text="'Trang chủ'"></a>
+	</div>
+	<div class="container">
+		<div class="smallBox">
+			<h1><b>Đặt phòng <span th:text="${room.name}"></span></b></h1>
+			<h1><b>Giá phòng <span id="price" th:text="${room.price}"></span></b></h1>
+
+			<form th:action="@{/booking}" method="post" th:object="${booking}">
+				<div class="row">
+					<div th:text="'Ngày nhận: '" align="left"></div>
+					<div><input type="date" th:field="*{checkin}" id="checkin" required="true"></div>
+				</div>
+				<div class="row">
+					<div th:text="'Ngày trả: '" align="left"></div>
+					<div><input type="date" th:field="*{checkout}" id="checkout" required="true"></div>
+				</div>
+
+				<div class="row">
+					<div th:if="${message}">
+						<div colspan="2" th:text="${message}"></div>
+					</div>
+					<div th:text="'Ghi chú: '" align="left"></div>
+					<div><input type="text" th:field="*{note}"></div>
+				</div>
+
+				<div class="row">
+					<div th:text="'Tổng tiền: '" align="left">></div>
+					<div id="totalPrice"></div>
+				</div>
+
+				<div class="rowBt">
+					<div><button><a th:href="@{/room}" th:text="'Quay lại'"></a></button></div>
+					<div><input type="submit" value="Xác nhận"></div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+<script>
+	var checkinInput = document.getElementById('checkin');
+	var checkoutInput = document.getElementById('checkout');
+
+	checkoutInput.onchange = calTotalPrice;
+
+	function calTotalPrice() {
+		var checkinValue = checkinInput.value;
+		var checkoutValue = checkoutInput.value;
+		if (checkinValue && checkoutValue) {
+			var checkinDate = new Date(checkinValue);
+			var checkoutDate = new Date(checkoutValue);
+
+			var pricePerDay = parseFloat(document.getElementById('price').textContent);
+			
+			var diff = checkoutDate.getTime() - checkinDate.getTime();
+			var numberOfDays = Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
+
+			var totalPrice = numberOfDays * pricePerDay;
+
+			var totalPriceElement = document.getElementById('totalPrice');
+			totalPriceElement.textContent = totalPrice;
+
+			console.log('pricePerDay:', pricePerDay);
+			console.log('numberOfDays:', numberOfDays);
+			console.log('checkinValue:', checkinValue);
+			console.log('checkoutValue:', checkoutValue);
+			console.log('totalPrice:', totalPrice);
+		}
+	}
+	
+	
+</script>
+
+</html>

@@ -1,0 +1,71 @@
+thead,
+tfoot {
+	text-align: center;
+}
+
+a:link,
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+button {
+	width: 95px;
+	border-radius: 10px;
+}
+
+button:hover {
+	background-color: #90B7E4;
+	color: black !important;
+	transition: 0.3s ease-in-out;
+}
+
+a.bt:hover {
+	background-color: #90B7E4;
+	color: black !important;
+	transition: 0.3s ease-in-out;
+}
+
+.top-table-func {
+	display: flex;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.top-table-func .searchInput {
+	margin-left: 30px;
+	height: fit-content;
+}
+
+.top-table-func .searchSubmit {
+	margin-left: 5px;
+	border-radius: 7px;
+	height: fit-content;
+}
+
+.btOutExcel {
+	margin-left: 10%;
+	background-color: #4e73df;
+	line-height: 15px;
+	height: fit-content;
+	font-size: .950rem;
+	line-height: 1.5;
+	border-radius: 5px;
+	width: fit-content;
+}
+
+.btOutExcel a {
+	color: white;
+}
+
+#loglog:hover #btnLogout input[type="submit"] {
+	background-color: #eaecf4;
+	border: none;
+	cursor: pointer;
+}
+
+#loglog:active #btnLogout input[type="submit"] {
+	background-color: #dddfeb;
+	border: none;
+	cursor: pointer;
+}

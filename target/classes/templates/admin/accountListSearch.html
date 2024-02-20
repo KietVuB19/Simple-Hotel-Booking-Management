@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Danh sách người dùng</title>
+
+	<!-- Custom fonts for this template -->
+	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this page -->
+	<link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<style>
+		thead,
+		tfoot {
+			text-align: center;
+		}
+
+		a:link,
+		a:visited {
+			text-decoration: none;
+			color: black;
+		}
+
+		button {
+			width: 95px;
+			border-radius: 10px;
+		}
+
+		button:hover {
+			background-color: #90B7E4;
+			color: black !important;
+			transition: 0.3s ease-in-out;
+		}
+
+		a.bt:hover {
+			background-color: #90B7E4;
+			color: black !important;
+			transition: 0.3s ease-in-out;
+		}
+
+		.top-table-func {
+			display: flex;
+			width: 100%;
+			margin-bottom: 15px;
+		}
+
+		.top-table-func .searchInput {
+			width: 20%;
+			margin-left: 30px;
+			height: fit-content;
+		}
+
+		.top-table-func .searchSubmit {
+			margin-left: 5px;
+			border-radius: 7px;
+			height: fit-content;
+		}
+
+		.btOutExcel {
+			margin-left: 10%;
+			background-color: #4e73df;
+			line-height: 15px;
+			height: fit-content;
+			font-size: .950rem;
+			line-height: 1.5;
+			border-radius: 5px;
+			width: fit-content;
+		}
+
+		.btOutExcel a {
+			color: white;
+		}
+
+		#loglog:hover #btnLogout input[type="submit"] {
+			background-color: #eaecf4;
+			border: none;
+			cursor: pointer;
+		}
+
+		#loglog:active #btnLogout input[type="submit"] {
+			background-color: #dddfeb;
+			border: none;
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+
+<body id="page-top">
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+			<!-- Sidebar - Brand -->
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/}">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-laugh-wink"></i>
+				</div>
+				<div class="sidebar-brand-text mx-3">Trang chủ Admin</div>
+			</a>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
+
+			<!-- Nav Item - MainMenu -->
+			<li class="nav-item active">
+				<a class="nav-link" th:href="@{/}">
+					<i class="fas fa-fw fa-tachometer-alt"></i>
+					<span>Trang chủ</span></a>
+			</li>
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Chức năng
+			</div>
+
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+				<a class="nav-link collapsed" th:href="@{/}" data-toggle="collapse" data-target="#collapsePages"
+					aria-expanded="true" aria-controls="collapsePages">
+					<i class="fas fa-fw fa-folder"></i>
+					<span>Tài khoản</span>
+				</a>
+				<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+
+						<a class="collapse-item" th:href="@{/logout}" id="loglog" th:text="'Đăng xuất'">
+
+							<!--<form id="btnLogout" th:action="logout" method="post">
+								<input type="submit" value="Đăng xuất">
+							</form>-->
+						</a>
+
+						<a class="collapse-item" href="@{/login}" th:text="'Quên mật khẩu'"></a>
+
+					</div>
+				</div>
+			</li>
+
+
+			<!-- Nav Item - Tables -->
+			<li class="nav-item">
+				<a id="active1" class="nav-link" th:href="@{/account/list}">
+					<i class="fas fa-fw fa-table"></i>
+					<span>Quản lý người dùng</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+
+			<!-- Sidebar Toggler (Sidebar) -->
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"></button>
+			</div>
+
+		</ul>
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+					<!-- Topbar Navbar -->
+					<ul class="navbar-nav ml-auto">
+
+						<!-- Nav Item - Alerts -->
+						<li class="nav-item dropdown no-arrow mx-1">
+							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-bell fa-fw"></i>
+
+								<!-- Counter - Alerts -->
+								<span class="badge badge-danger badge-counter">3+</span>
+							</a>
+
+							<!-- Dropdown - Alerts -->
+							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+								aria-labelledby="alertsDropdown">
+								<h6 class="dropdown-header">
+									Thông báo
+								</h6>
+								<a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="mr-3">
+										<div class="icon-circle bg-primary">
+											<i class="fas fa-file-alt text-white"></i>
+										</div>
+									</div>
+									<div>
+										<div class="small text-gray-500">Ngày 7 / 7 / 2023</div>
+										<span class="font-weight-bold">Báo cáo tiến độ công việc</span>
+									</div>
+								</a>
+								<a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="mr-3">
+										<div class="icon-circle bg-success">
+											<i class="fas fa-donate text-white"></i>
+										</div>
+									</div>
+									<div>
+										<div class="small text-gray-500">Ngày 7 / 7 / 2023</div>
+										300.000đ được chuyển vào tài khoản XXX092139
+									</div>
+								</a>
+								<a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="mr-3">
+										<div class="icon-circle bg-warning">
+											<i class="fas fa-exclamation-triangle text-white"></i>
+										</div>
+									</div>
+									<div>
+										<div class="small text-gray-500">Ngày 7 / 7 / 2023</div>
+										Cảnh báo an ninh
+									</div>
+								</a>
+								<a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+							</div>
+						</li>
+
+						<!-- Nav Item - Messages -->
+						<li class="nav-item dropdown no-arrow mx-1">
+							<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-envelope fa-fw"></i>
+								<!-- Counter - Messages -->
+								<span class="badge badge-danger badge-counter">1</span>
+							</a>
+							<!-- Dropdown - Messages -->
+							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+								aria-labelledby="messagesDropdown">
+								<h6 class="dropdown-header">
+									Tin nhắn
+								</h6>
+								<a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="dropdown-list-image mr-3">
+										<img class="rounded-circle" src="/img/undraw_profile_1.svg" alt="...">
+										<div class="status-indicator bg-success"></div>
+									</div>
+									<div class="font-weight-bold">
+										<div class="text-truncate">Xin chào</div>
+										<div class="small text-gray-500">Kiệt · 58p</div>
+									</div>
+								</a>
+						</li>
+
+						<div class="topbar-divider d-none d-sm-block"></div>
+
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow">
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào <span
+										th:if="${account}" th:text="${account.username}"></span></span>
+								<img class="img-profile rounded-circle" src="/img/undraw_profile.svg">
+							</a>
+							<!-- Dropdown - User Information -->
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+								aria-labelledby="userDropdown">
+								<a class="dropdown-item" th:href="@{/account}">
+									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+									Thông tin cá nhân
+								</a>
+								<a class="dropdown-item" href="#">
+									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+									Nhật ký hoạt động
+								</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" th:href="@{/logout}">
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Đăng xuất
+								</a>
+							</div>
+						</li>
+
+					</ul>
+					<!-- End Topbar Navbar -->
+
+				</nav>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-2 text-gray-800">Danh sách tìm kiếm cho '[[${keyword}]]'</h1>
+					<!-- DataTables Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Bảng người dùng</h6>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%">
+									<div class="top-table-func">
+
+										<form th:object="${account}" th:action="@{/account/list/searching}"
+											method="get">
+											<input class="searchInput" type="text" placeholder="Nhập tên người dùng"
+												name="keyword" th:value="${keyword}">
+											<input class="searchSubmit" type="submit" value="Tìm kiếm">
+										</form>
+									</div>
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>Username</th>
+											<th>Mật khẩu</th>
+											<th>Trạng thái</th>
+											<th>Vai trò</th>
+											<th>Ngày tạo</th>
+											<th>Họ tên</th>
+											<th>Số CCCD</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>ID</th>
+											<th>Username</th>
+											<th>Mật khẩu</th>
+											<th>Trạng thái</th>
+											<th>Vai trò</th>
+											<th>Ngày tạo</th>
+											<th>Họ tên</th>
+											<th>Số CCCD</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr th:each="account:${listResult}">
+											<td th:text="${account.id}" align="center"></td>
+											<td th:text="${account.username}" align="center"></td>
+											<td th:text="${account.password}" align="center"></td>
+
+											<td th:if="${account.isActive}" th:text="'Hoạt động'" align="center"></td>
+											<td th:unless="${account.isActive}" th:text="'Bị khoá'" align="center"></td>
+
+											<td th:switch="${account.roles}">
+												<span th:case="'ROLE_MANAGER'" th:text="'Quản lý'"></span>
+												<span th:case="'ROLE_USER'" th:text="'Khách hàng'"></span>
+											</td>
+
+											<td th:text="${account.createdAt}" align="center"></td>
+											<td th:text="${account.user.fullname}" align="center"></td>
+											<td th:text="${account.user.idCard}" align="center"></td>
+
+											<td th:if="${account.isActive}">
+												<button class="status"><a
+														th:href="@{/account/disable/{id}(id=${account.id})}"
+														th:text="'Khóa'" align="center"></a></button>
+											</td>
+											<td th:unless="${account.isActive}">
+												<button><a class="bt"
+														th:href="@{/account/enable/{id}(id=${account.id})}"
+														th:text="'Khôi phục'" align="center"></a></button>
+											</td>
+											<td>
+												<button><!-- <a th:href="@{/account/change/{id}(id=${account.id})}" th:text="'Thay đổi'"></a> -->Thay
+													đổi</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Khách sạn GrandMek</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="/js/sb-admin-2.min.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+</body>
+
+</html>

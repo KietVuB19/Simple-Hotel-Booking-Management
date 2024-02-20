@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Danh sách phòng</title>
+	<link href="/css/roomList.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="topNavbar">
+		<a th:href="@{/account}" th:text="'Tài khoản'"></a>
+		<a th:href="@{/booking/list}" th:text="'Danh sách đặt phòng'"></a>
+		<a class="active" th:href="@{/room}" th:text="'Danh sách phòng'"></a>
+		<a th:href="@{/}" th:text="'Trang chủ'"></a>
+	</div>
+	<div class="back_re">
+		<div class="title">
+			<h2>Danh sách phòng</h2>
+		</div>
+	</div>
+	<div class="container">
+		<div class="container-fluid">
+			<div class="card shadow mb-4">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<div class="top-table-func">
+
+								<form th:object="${room}" th:action="@{/room/search}" method="get">
+									<div class="">
+										<input class="searchInput" type="number" min="0"
+											placeholder="Nhập giá thấp nhất" name="minPrice" th:value="${minPrice}"
+											style="margin-left: 15px;">
+										<input class="searchInput" type="number" min="0" placeholder="Nhập giá cao nhất"
+											name="maxPrice" th:value="${maxPrice}" style="margin-left: 15px;">
+										<input class="searchInput" type="number" min="1" placeholder="Nhập số giường"
+											name="bed" th:value="${bed}" style="margin-left: 15px;">
+										<input class="searchSubmit" type="submit" value="Tìm kiếm"
+											style="margin-left: 40px;">
+									</div>
+								</form>
+							</div>
+							<thead>
+								<tr>
+									<th>Số phòng</th>
+									<th>Loại</th>
+									<th>Giá phòng (vnđ)</th>
+									<th>Loại giường</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr th:each="room:${listResult}">
+									<td th:text="${room.name}" align="center"></td>
+									<td th:text="${room.type}" align="center"></td>
+									<td th:text="${room.price}" align="center"></td>
+									<td th:text="${room.bed}" align="center"></td>
+
+									<td class="btacc">
+										<button class="sideBt"><a th:href="@{/room/details/{id}(id=${room.id})}"
+												th:text="'Chi tiết'"></a></button>
+									</td>
+									<td class="btacc">
+										<button class="sideBt"><a th:href="@{/booking/{id}(id=${room.id})}"
+												th:text="'Đặt phòng'"></a></button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
